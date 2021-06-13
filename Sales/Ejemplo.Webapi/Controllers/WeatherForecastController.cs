@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sales.WS.Controllers
+namespace Ejemplo.Webapi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

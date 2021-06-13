@@ -1,6 +1,6 @@
 using System;
 
-namespace Sales.WS
+namespace Ejemplo.Webapi
 {
     public class WeatherForecast
     {

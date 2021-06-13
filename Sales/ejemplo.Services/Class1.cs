@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sales.Domain
+namespace ejemplo.Services
 {
     public class Class1
     {
