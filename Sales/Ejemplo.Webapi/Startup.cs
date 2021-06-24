@@ -1,11 +1,14 @@
 using ejemplo.Abstractions;
-using ejemplo.Application;
+using ejemplo.EApplication;
 using ejemplo.DataAccess;
 using ejemplo.Repository;
+using ejemplo.Services;
+using ejemplo.webapi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -37,10 +40,12 @@ namespace Ejemplo.Webapi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ejemplo.Webapi", Version = "v1" });
             });
 
-
-            services.AddScoped(typeof(IApplication<>), typeof(Application<>));
+            services.AddDbContext<ApiDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),b=>b.MigrationsAssembly("Ejemplo.Webapi")));
+            services.AddScoped(typeof(IEApplication<>), typeof(EApplication<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IDbContext<>), typeof(DbContext<>));
+            services.AddScoped(typeof(ISalesServices), typeof(SalesServices));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

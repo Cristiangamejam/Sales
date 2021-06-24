@@ -3,17 +3,17 @@ using ejemplo.Repository;
 using System;
 using System.Collections.Generic;
 
-namespace ejemplo.Application
+namespace ejemplo.EApplication
 {
-    public interface IApplication<T> : ICrud<T>
+    public interface IEApplication<T> : ICrud<T>
     {
 
     }
 
-    public class Application<T> : IApplication<T> where T : IEntity
+    public class EApplication<T> : IEApplication<T> where T : IEntity
     {
         IRepository<T> _repository;
-        public Application(IRepository<T> repository)
+        public EApplication(IRepository<T> repository)
         {
             _repository = repository;
         }
